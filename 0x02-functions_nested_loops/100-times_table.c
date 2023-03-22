@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  *print_times_table - prints the n times table starting with 0
  *@n: times table to print
@@ -22,7 +21,6 @@ void print_times_table(int n)
 					_putchar(',');
 					_putchar(' ');
 				}
-
 				if (product < 10 && j != 0)
 				{
 					_putchar(' ');
