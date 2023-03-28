@@ -35,6 +35,7 @@ int main(void)
 
 		putchar(password[i++]);
 	}
+	putchar('\n');
 
 	return (0);
 }
