@@ -10,31 +10,19 @@
  */
 int main(void)
 {
-	int i, sum = 0, diff_half1, diff_half2;
-	char password[100];
+	char password[PASSWORD_LENGTH + 1];
+	const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	int i;
 
 	srand(time(NULL));
 
-	while (sum < 2772)
+	for (i = 0; i < PASSWORD_LENGTH; i++)
 	{
-		password[i] = rand() % 94 + 33;
-		sum += password[i++];
+		password[i] = charset[rand() % sizeof(charset)];
 	}
+	password[PASSWORD_LENGTH] = '\0';
 
-	diff_half1 = (sum - 2772) / 2;
-	diff_half2 = (sum - 2772) / 2 + (sum - 2772) % 2;
+	printf("%s\n", password);
 
-	i = 0;
-
-	while (password[i])
-	{
-		if (i % 2 == 0)
-			password[i] += diff_half1;
-		else
-			password[i] -= diff_half2;
-
-		putchar(password[i++]);
-	}
-
-	return (0);
+	return 0;
 }
