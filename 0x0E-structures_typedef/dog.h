@@ -1,3 +1,6 @@
+#include <stdlb.h>
+#include "dog.h"
+
 /**
  * struct dog - dog data
  * @name: name of the dog
