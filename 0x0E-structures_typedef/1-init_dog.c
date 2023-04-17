@@ -1,3 +1,4 @@
+#include <stddef.h>
 /**
  * init_dog - a function that initialize a variable of type struct dog
  * @d: pointer to a struct dog
@@ -7,12 +8,9 @@
  *
  * Description: Initializes metadata about the dog and type of dog's struct
  */
-void init_dog(struct dog *d, char *name, float age, char *owner)
+typedef struct dog
 {
-	if (d != NULL)
-	{
-	d->name = name;
-	d->age = age;
-	d->owner = owner;
-	}
-}
+    char *name;
+    float age;
+    char *owner;
+} dog_t;
