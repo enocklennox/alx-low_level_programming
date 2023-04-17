@@ -9,7 +9,7 @@
  *
  * Description: Defines metadata about the dog and type of dog's struct
  */
-typedef struct dog
+struct dog
 {
 	char *name;
 	float age;
