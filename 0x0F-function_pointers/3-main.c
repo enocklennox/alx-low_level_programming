@@ -1,18 +1,18 @@
-#include <stdio.h>
+#include "function_pointers.h"
 #include <stdlib.h>
-
+#include <stdio.h>
+#include "3-calc.h"
 /**
- * main - Entry point
- * @argc: Argument count
- * @argv: Argument vector
+ * main - Prints the result of simple operations.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
  *
- * Return: Always 0 (Success)
+ * Return: Always 0.
  */
-int main(int argc, char *argv[])
+int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	int num1, num2;
-	int result;
-	char operator;
+	char *op;
 
 	if (argc != 4)
 	{
@@ -21,42 +21,23 @@ int main(int argc, char *argv[])
 	}
 
 	num1 = atoi(argv[1]);
-	operator = argv[2][0];
+	op = argv[2];
 	num2 = atoi(argv[3]);
 
-	switch (operator)
+	if (get_op_func(op) == NULL || op[1] != '\0')
 	{
-	case '+':
-		result = num1 + num2;
-		break;
-	case '-':
-		result = num1 - num2;
-		break;
-	case '*':
-		result = num1 * num2;
-		break;
-	case '/':
-		if (num2 == 0)
+		printf("Error\n");
+		exit(99);
+	}
+
+	if ((*op == '/' && num2 == 0) ||
+	    (*op == '%' && num2 == 0))
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	result = num1 / num2;
-		break;
-		case '%':
-	if (num2 == 0)
-	{
-	printf("Error\n");
-	exit(100);
-	}
-	result = num1 % num2;
-		break;
-		default:
-	printf("Error\n");
-	exit(99);
-	}
-
-	printf("%d\n", result);
+	printf("%d\n", get_op_func(op)(num1, num2));
 
 	return (0);
 }
+
