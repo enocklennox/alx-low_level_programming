@@ -1,4 +1,8 @@
-#include "list.h"
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include "lists.h"
+
 /**
  * print_list - prints all the elements of a list_t list
  * @h: pointer to head of list
@@ -12,42 +16,14 @@ size_t print_list(const list_t *h)
 
 	while (current != NULL)
 	{
-		if (current->str == NULL)
-			_putchar('['), _putchar('0'), _putchar(']'), _putchar(' '),
-				_putchar('('), _putchar('n'), _putchar('i'),
-				_putchar('l'), _putchar(')'), _putchar('\n');
-		else
-			_putchar('['), print_number(current->len), _putchar(']'), _putchar(' '),
-				print_string(current->str), _putchar('\n');
+	if (current->str == NULL)
+		printf("[0] (nil)\n");
+	else
+		printf("[%d] %s\n", current->len, current->str);
 
-		current = current->next;
-		count++;
+	current = current->next;
+	count++;
 	}
 
 	return (count);
-}
-
-/**
- * print_number - prints an integer using only putchar
- * @n: integer to print
- */
-void print_number(int n)
-{
-	if (n / 10)
-	print_number(n / 10);
-
-	_putchar(n % 10 + '0');
-}
-
-/**
- * print_string - prints a string using only putchar
- * @str: string to print
- */
-void print_string(char *str)
-{
-	if (*str == '\0')
-	return;
-
-	_putchar(*str);
-	print_string(str + 1);
 }
