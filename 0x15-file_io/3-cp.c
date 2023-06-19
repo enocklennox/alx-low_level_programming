@@ -6,7 +6,6 @@
  * main - copies the content of a file to another file
  * @argc: number of arguments passed to the program
  * @argv: array of arguments passed to the program
- * create_buffer - Allocates 1024 bytes for a buffer.
  * Return: 0 on success, or an exit code on failure
  */
 char *create_buffer(char *file);
@@ -25,11 +24,6 @@ void close_file(int fd);
 
 	return (buffer);
 }
-
-/**
- * close_file - Closes file descriptors.
- * @fd: The file descriptor to be closed.
- */
 void close_file(int fd)
 {
 	int c;
@@ -42,13 +36,6 @@ void close_file(int fd)
 		exit(100);
 	}
 }
-
-/**
- * main - Copies the contents of a file to another file.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
- * Return: 0 on success.
- */
 int main(int argc, char *argv[])
 {
 	int from, to, r, w;
